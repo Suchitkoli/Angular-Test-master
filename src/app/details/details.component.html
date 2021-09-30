@@ -1,0 +1,26 @@
+
+<table    class="table table-bordered table-dark" >
+    <tr scope="col" >
+        <th  >AreaDesc</th>
+        <th  >AffectedZones</th>
+        <th   >Event</th>
+    </tr>
+    <tr *ngFor="let dt of alertDetails?.features"  >
+        <div *ngIf="dt.properties.event === this.selectedAlertType" >
+        <td  >
+            {{dt.properties.areaDesc}}
+        </td>
+       
+        <td  >
+            {{dt.properties.affectedZones}}
+        </td>
+        <td>
+            {{dt.properties.event}}
+
+        </td>
+      
+    </div>
+    
+
+    </tr>
+</table>

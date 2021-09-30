@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-3 text-right">
+        Alert Types:
+      </div>
+      <div class="col text-right">
+        <select class="form-control form-control-sm" (change)="weatherEvent($event)" >
+          <option *ngFor="let item of alertTypes">{{item.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div><br><br>
+
+     <div class="container">
+      <div class="row">
+        <div class="col-3 text-right">
+         Area Types:
+        </div>
+        <div class="col text-right">
+          <select class="form-control form-control-sm"   >
+            <option  *ngFor="let data of alertArea" >{{data}}</option>
+            
+          </select>
+        </div>
+      </div>
+   
+    </div>
+    <br><br>
+    <mat-accordion>
+    <mat-expansion-panel class="p-3 border bg-light" *ngFor="let data of alertArea" style="margin: 10px;" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{data}}
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently I am 
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <!-- <button mat-raised-button color="primary" name="view"  (click)="getAreaDetails(data)" >View</button> -->
+    <button mat-button (click)="getAreaDetails(data)" >View!</button>
+  </mat-expansion-panel>
+</mat-accordion>
