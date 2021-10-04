@@ -27,10 +27,10 @@ export class MainComponent implements OnInit {
   
 
   }
-
-  weatherEvent($event){
-    alert('selectteding the event :: '+ $event.target.value)
-    this.fetchdata.sendMessage($event.target.value)
+  selectedValue:string
+  weatherEvent(selectedValue:string){
+    alert('selectteding the event :: '+ selectedValue)
+    this.fetchdata.sendMessage(selectedValue)
   }
 
   getAreaDetails(areaCode:string){
