@@ -88,26 +88,6 @@ export class DetailsComponent implements OnInit {
       this.alertDetails=response ;
       console.log("AlertDeatials", this.alertDetails)
     
-   for(let i of this.alertDetails['features']){
-     console.log("Details",i)
-    //  this.getproperties.features.push(i)
-   }
-    
-    console.log("Get properties", this.getproperties)
-      
-  
-
-    // for(var key in this.alertDetails ){
-    //   if(this.alertDetails.hasOwnProperty(key))
-    //   console.log("Elements Details",this.alertDetails[key])
-    //   for(let element of this.alertDetails ){
-    //     console.log("empty",element)
-    //   }
-    //   this.getproperties.push(this.alertDetails[key])
-    // }
-
-// console.log("Get properties",this.getproperties)
-
       //Iteration and Object Creation
       for (let ele of  this.alertDetails['features']) {
         
