@@ -58,7 +58,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   ],
   providers: [AlertAreaService,AreaDetailsService,
     WeatherServices,
-    {provide: HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true }
+    
   
   ],
   bootstrap: [AppComponent],

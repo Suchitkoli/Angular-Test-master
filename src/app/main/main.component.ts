@@ -4,6 +4,7 @@ import { AlertType } from '../core/models/alert-type.model';
 import { WeatherServices } from '../core/weather.services';
 import { AlertAreaService } from '../services/alert-area.service';
 import { FetchdataService } from '../services/fetchdata.service';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',

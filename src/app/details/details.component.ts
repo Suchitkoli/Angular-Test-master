@@ -76,11 +76,7 @@ export class DetailsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(param => {
       this.areaCode = param.get('area');
     });
-
-
-   
-
-
+    
     // getting the data of this.areaCode
     this.areadetails.getarea(this.areaCode).subscribe((response:details) => {
       console.log("Areas ", response  ) ;
@@ -104,27 +100,12 @@ export class DetailsComponent implements OnInit {
         this.getInfo.push(alertInfo);
         
         };
-
-
-
         setTimeout(()=>{
           this.showSpinner=false
         },3000)
-
-       
-        
     })
-
     console.log("Datasource", this.getInfo)
-    // ELEMENT_DATA = this.getInfo;
-    // this.alertDetails.pipe(
-    //   tap(items => console.log(items)),
-       
-    // )
-
-    
-    
-  }
+     }
  
 
   //passing data to mat table
