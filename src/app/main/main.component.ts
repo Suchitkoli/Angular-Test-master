@@ -24,9 +24,7 @@ export class MainComponent implements OnInit {
     this.area.getalters().subscribe(message =>{
       console.log(message)
       this.alertArea=Object.keys(message["areas"])
-    })
-  
-
+    });
   }
   selectedValue:string
   weatherEvent(selectedValue:string){

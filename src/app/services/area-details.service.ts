@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AreaDetailsService {
-  areaurl:string='https://api.weather.gov/alerts/active/area/'
+  areaUrl:string='https://api.weather.gov/alerts/active/area/'
+  urlPass:string;
   constructor(private httpclient:HttpClient) { }
 
   getarea(pas:string){
-
-    return this.httpclient.get(this.areaurl+pas)
+    this.urlPass=this.areaUrl+pas
+    return this.httpclient.get(this.urlPass)
 
   }
 

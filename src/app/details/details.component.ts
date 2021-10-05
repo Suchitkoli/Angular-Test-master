@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
-
 import { AreaDetailsService } from '../services/area-details.service';
 import { FetchdataService } from '../services/fetchdata.service';
-import { LoaderService } from '../services/loader/loader.service';
 
+//Defining Model
 export interface properties{
   areaDesc: String
   affectedZones: string;
@@ -23,26 +18,11 @@ export interface details{
   features:features[]
 }
 
-
-
-
 export class AlertInfo {
   areaDesc: String
   affectedZones: string;
   event: string
 }
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   Alerts: AlertInfo[]
-// }
-
-// let ELEMENT_DATA: AlertInfo[];
-
-// let ELEMENT_DATA: AlertInfo[] = [
-// ]; 
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -52,16 +32,10 @@ export class AlertInfo {
 export class DetailsComponent implements OnInit {
  
   areaCode: string;
-  dataArray: any[] = [];
   alertDetails=<details>{}
-  getproperties=<details>{}
-  getMethod:Array<details> = new Array<details>()
   getInfo: Array<AlertInfo> = new Array<AlertInfo>()
   selectedAlertType: string
   showSpinner=true
-
-  
- 
 
   constructor(private activatedRoute: ActivatedRoute, private areadetails: AreaDetailsService, private fetdata: FetchdataService) { }
 
@@ -76,7 +50,7 @@ export class DetailsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(param => {
       this.areaCode = param.get('area');
     });
-    
+
     // getting the data of this.areaCode
     this.areadetails.getarea(this.areaCode).subscribe((response:details) => {
       console.log("Areas ", response  ) ;
@@ -106,8 +80,6 @@ export class DetailsComponent implements OnInit {
     })
     console.log("Datasource", this.getInfo)
      }
- 
-
   //passing data to mat table
   displayedColumns: string[] = ['areaDesc', 'affectedZones', 'event'];
 
