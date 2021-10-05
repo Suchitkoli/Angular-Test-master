@@ -30,7 +30,7 @@ export class DetailsComponent implements OnInit {
   alertDetails=<details>{}
   getInfo: Array<properties> = new Array<properties>()
   selectedAlertType: string
-  eventCheck: string
+
   showSpinner=true
   count=0
   constructor(private activatedRoute: ActivatedRoute, private areadetails: AreaDetailsService, private fetdata: FetchdataService) { }
@@ -41,7 +41,6 @@ export class DetailsComponent implements OnInit {
     this.fetdata.getMessage().subscribe(message => {
       console.log("Print Message", message)
       this.selectedAlertType = message
-
     });
 
     this.activatedRoute.paramMap.subscribe(param => {
@@ -51,10 +50,9 @@ export class DetailsComponent implements OnInit {
     // getting the data of this.areaCode
     this.areadetails.getarea(this.areaCode).subscribe((response:details) => {
       console.log("Areas ", response  ) ;
-
       this.alertDetails=response ;
       console.log("AlertDeatials", this.alertDetails)
-    
+  
       //Iteration and Object Creation
       for (let ele of  this.alertDetails['features']) {
         
@@ -68,27 +66,24 @@ export class DetailsComponent implements OnInit {
           zoneString = zoneString + zone + ","
         }
         alertInfo.affectedZones = zoneString;
+        
+        //Checking selected alert in Area
      if(alertInfo.event==this.selectedAlertType){
       this.getInfo.push(alertInfo);  
       this.count++
      } 
         };
         if(this.count<=0){
-            alert('Alert is not available')
-            
+            alert('Alert is not available in this area')
         }
-         
           setTimeout(()=>{
             this.showSpinner=false
-          },3000)
-  
-
-    })
-    console.log("Datasource", this.eventCheck)
+          },3000);
+    });
+    console.log("Datasource",this.getInfo)
      }
   //passing data to mat table
   displayedColumns: string[] = ['areaDesc', 'affectedZones', 'event'];
-
   dataSource=this.getInfo
 
 }

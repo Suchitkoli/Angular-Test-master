@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
   }
   selectedValue:string
   weatherEvent(selectedValue:string){
-    alert('selectteding the event :: '+ selectedValue)
+    // alert('selectteding the event :: '+ selectedValue)
     this.fetchdata.sendMessage(selectedValue)
   }
 
