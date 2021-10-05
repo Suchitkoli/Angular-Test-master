@@ -4,7 +4,7 @@ import { AreaDetailsService } from '../services/area-details.service';
 import { FetchdataService } from '../services/fetchdata.service';
 
 //Defining Model
-export interface properties{
+export class properties{
   areaDesc: String
   affectedZones: string;
   event: string
@@ -18,11 +18,6 @@ export interface details{
   features:features[]
 }
 
-export class AlertInfo {
-  areaDesc: String
-  affectedZones: string;
-  event: string
-}
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -33,14 +28,16 @@ export class DetailsComponent implements OnInit {
  
   areaCode: string;
   alertDetails=<details>{}
-  getInfo: Array<AlertInfo> = new Array<AlertInfo>()
+  getInfo: Array<properties> = new Array<properties>()
   selectedAlertType: string
+  eventCheck: string
   showSpinner=true
-
+  count=0
   constructor(private activatedRoute: ActivatedRoute, private areadetails: AreaDetailsService, private fetdata: FetchdataService) { }
 
   ngOnInit() {
-
+    
+    //Getting Alert data from Main Component
     this.fetdata.getMessage().subscribe(message => {
       console.log("Print Message", message)
       this.selectedAlertType = message
@@ -61,7 +58,7 @@ export class DetailsComponent implements OnInit {
       //Iteration and Object Creation
       for (let ele of  this.alertDetails['features']) {
         
-        let alertInfo: AlertInfo = new AlertInfo();
+        let alertInfo: properties = new properties();
 
         alertInfo.areaDesc = ele.properties.areaDesc;
         alertInfo.event = ele.properties.event;
@@ -71,19 +68,27 @@ export class DetailsComponent implements OnInit {
           zoneString = zoneString + zone + ","
         }
         alertInfo.affectedZones = zoneString;
-        this.getInfo.push(alertInfo);
-        
+     if(alertInfo.event==this.selectedAlertType){
+      this.getInfo.push(alertInfo);  
+      this.count++
+     } 
         };
-        setTimeout(()=>{
-          this.showSpinner=false
-        },3000)
+        if(this.count<=0){
+            alert('Alert is not available')
+            
+        }
+         
+          setTimeout(()=>{
+            this.showSpinner=false
+          },3000)
+  
+
     })
-    console.log("Datasource", this.getInfo)
+    console.log("Datasource", this.eventCheck)
      }
   //passing data to mat table
   displayedColumns: string[] = ['areaDesc', 'affectedZones', 'event'];
 
   dataSource=this.getInfo
-
 
 }

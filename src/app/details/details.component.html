@@ -2,11 +2,12 @@
 <div *ngIf="showSpinner" class="loader-container" >
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div >
+<div class='divstyle'>
 <table mat-table [dataSource]="dataSource"  *ngIf="!showSpinner"  class="mat-elevation-z8"> 
   <ng-container class="style" matColumnDef="areaDesc">
     <th mat-header-cell *matHeaderCellDef> AREA </th>
     <ng-container *matCellDef="let element">
-    <td mat-cell *ngIf='this.selectedAlertType === element.event;'  > {{element.areaDesc}} </td>
+    <td mat-cell *ngIf='this.selectedAlertType === element.event'  > {{element.areaDesc}} </td>
   </ng-container>
   </ng-container>
 
@@ -23,6 +24,8 @@
     <td mat-cell *ngIf='this.selectedAlertType === element.event' > {{element.event}} </td>
   </ng-container>
   </ng-container>
+ 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</div>
