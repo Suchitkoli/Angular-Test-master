@@ -69,7 +69,8 @@ export class DetailsComponent implements OnInit {
         
         //Checking selected alert in Area
      if(alertInfo.event==this.selectedAlertType){
-      this.getInfo.push(alertInfo);  
+      this.getInfo.push(alertInfo); 
+      console.log("Datasource",this.getInfo) 
       this.count++
      } 
         };
@@ -80,7 +81,7 @@ export class DetailsComponent implements OnInit {
             this.showSpinner=false
           },3000);
     });
-    console.log("Datasource",this.getInfo)
+   
      }
   //passing data to mat table
   displayedColumns: string[] = ['areaDesc', 'affectedZones', 'event'];
