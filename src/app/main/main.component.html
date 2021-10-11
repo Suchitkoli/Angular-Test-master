@@ -1,46 +1,26 @@
-<!-- 
-<div class="container">
-    <div class="row">
-      <div class="col-3 text-right">
-        Alert Types:
-      </div>
-      <div class="col text-right">
-        <select class="form-control form-control-sm" (change)="weatherEvent($event)" >
-          <option *ngFor="let item of alertTypes">{{item.name}}</option>
-        </select>
-      </div>
-    </div>
-  </div><br><br> -->
 
-  <mat-form-field class="container"  >
-   
- 
+ <mat-form-field class="container"  > 
     <mat-label>Select Alert</mat-label>
-    
       <mat-select  [(ngModel)]="selectedValue"  >
         <mat-option  *ngFor="let item of alertTypes"  [value]="item.name" (click)="weatherEvent(selectedValue)" >
           {{item.name}}
         </mat-option>
       </mat-select>
-  
     </mat-form-field>
 
-   
+  
     <br><br>
-    <mat-grid-list cols="4" rowHeight="3:2">
-      <mat-grid-tile *ngFor="let data of alertArea">
+   
+    <mat-grid-list cols="4" rowHeight="3:2" >
+      <mat-grid-tile  *ngFor="let data of areaDisplay" >
     <mat-accordion>
-    <mat-expansion-panel class="p-3 border bg-light" style="margin: 10px;" >
+    <mat-expansion-panel class="p-3 border bg-light" style="margin: 10px;">
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title   >
         {{data}}
       </mat-panel-title>
-      <!-- <mat-panel-description>
-        Currently I am 
-      </mat-panel-description> -->
     </mat-expansion-panel-header>
-    <!-- <button mat-raised-button color="primary" name="view"  (click)="getAreaDetails(data)" >View</button> -->
-    <button mat-button (click)="getAreaDetails(data)" >View!</button>
+    <button mat-button (click)="getAreaDetails(data)">View!</button>
   </mat-expansion-panel>
 </mat-accordion>
 </mat-grid-tile>

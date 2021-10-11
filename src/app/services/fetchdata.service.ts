@@ -8,15 +8,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class FetchdataService {
 
   constructor(private http: HttpClient) { }
-  public subject = new BehaviorSubject<any>(null);
+  public subject = new BehaviorSubject<string>(null);
   public datasubcription = this.subject.asObservable();
-  sendMessage(message: any) {
+  sendMessage(message: string) {
       this.subject.next(message );
   }
 
- 
-
-  getMessage(): Observable<any> {
+  getMessage(): Observable<string> {
       return this.subject.asObservable();
   }
  

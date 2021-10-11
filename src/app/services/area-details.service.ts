@@ -10,10 +10,7 @@ export class AreaDetailsService {
 
   getarea(pas:string){
     this.urlPass=this.areaUrl+pas
-    return this.httpclient.get(this.urlPass)
-
+      return this.httpclient.get(this.urlPass)
   }
-
-
 
 }
